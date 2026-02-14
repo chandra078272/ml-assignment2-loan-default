@@ -120,12 +120,16 @@ if uploaded is not None:
     need_scaled = any(k in model_name.lower() for k in ["logistic", "knn", "naive bayes"])
     if need_scaled:
         X_use = scaler.transform(X)
+    
         if "naive bayes" in model_name.lower():
-            X_use_for_pred = X_use.toarray()
+            # Works whether X_use is sparse or numpy array
+            X_use_for_pred = X_use.toarray() if hasattr(X_use, "toarray") else X_use
         else:
             X_use_for_pred = X_use
     else:
         X_use_for_pred = X
+
+
 
     # Predict
     y_pred = model.predict(X_use_for_pred)
