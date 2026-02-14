@@ -16,7 +16,7 @@ st.set_page_config(page_title="Loan Default Predictor", layout="centered")
 st.title("Loan Default (LendingClub) - Model Demo")
 st.write("Student demo app for ML Assignment 2. Upload a CSV (test data) and pick a model.")
 
-MODEL_DIR = "saved_models"
+MODEL_DIR = "ML_Assignment_2/saved_models"
 
 @st.cache_resource
 def load_assets():
